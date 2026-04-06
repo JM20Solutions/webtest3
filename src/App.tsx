@@ -1,3 +1,31 @@
+/* THEME APPLIED */
+:root {
+    --bg: #080c14;
+    --surface: #0f1521;
+    --surface2: #161e2e;
+    --border: #1c2a3d;
+    --border2: #243447;
+    --accent: #f5a623;
+    --accent-dim: #b87a1a;
+    --accent-glow: rgba(245,166,35,0.15);
+    --text: #dde4f0;
+    --text-muted: #5a7090;
+    --text-dim: #8a9ab5;
+    --green: #22c55e;
+    --red: #ef4444;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'Outfit', sans-serif;
+    --display: 'Syne', sans-serif;
+    --radius: 10px;
+    --radius-lg: 16px;
+}
+html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+}
+
 import React, { useState, useRef, useEffect } from 'react';
 import {
   Send, LogIn, LogOut, Lock, Mail,
@@ -182,9 +210,9 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             className="w-full max-w-md rounded-[2rem] overflow-hidden"
-            style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', boxShadow: '0 25px 60px rgba(0,0,0,0.5)' }}
+            style={{ background: 'var(--surface)', border: '1px solid var(--border)', boxShadow: '0 25px 60px rgba(0,0,0,0.5)' }}
           >
-            <div className="p-8 relative overflow-hidden" style={{ background: 'rgba(255,255,255,0.04)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+            <div className="p-8 relative overflow-hidden" style={{ background: 'var(--surface2)', borderBottom: '1px solid var(--surface2)' }}>
               <div className="absolute top-0 right-0 w-48 h-48 rounded-full -translate-x-8 -translate-y-16" style={{ background: 'radial-gradient(circle, rgba(99,179,237,0.15) 0%, transparent 70%)' }} />
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-1">
@@ -200,7 +228,7 @@ export default function App() {
               <div className="space-y-4">
                 <div>
                   <label className="text-[10px] font-bold uppercase tracking-widest text-blue-300/70 mb-2 block">Email Address</label>
-                  <div className="flex items-center gap-3 rounded-xl px-4 py-3 transition-all" style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                  <div className="flex items-center gap-3 rounded-xl px-4 py-3 transition-all" style={{ background: 'var(--surface2)', border: '1px solid var(--border)' }}>
                     <Mail className="w-4 h-4 text-blue-300/60" />
                     <input
                       type="email"
@@ -214,7 +242,7 @@ export default function App() {
 
                 <div>
                   <label className="text-[10px] font-bold uppercase tracking-widest text-blue-300/70 mb-2 block">Password</label>
-                  <div className="flex items-center gap-3 rounded-xl px-4 py-3 transition-all" style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                  <div className="flex items-center gap-3 rounded-xl px-4 py-3 transition-all" style={{ background: 'var(--surface2)', border: '1px solid var(--border)' }}>
                     <Lock className="w-4 h-4 text-blue-300/60" />
                     <input
                       type="password"
@@ -243,7 +271,7 @@ export default function App() {
                 type="submit"
                 disabled={loginLoading}
                 className="w-full text-white py-4 rounded-xl font-bold text-sm transition-all disabled:opacity-50 flex items-center justify-center gap-2"
-                style={{ background: 'linear-gradient(135deg, #2563eb, #1d4ed8)', boxShadow: '0 8px 24px rgba(37,99,235,0.4)' }}
+                style={{ background: 'linear-gradient(135deg, var(--accent), var(--accent-dim))', boxShadow: '0 8px 24px var(--accent-glow)' }}
               >
                 {loginLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <LogIn className="w-4 h-4" />}
                 Sign In
@@ -256,11 +284,11 @@ export default function App() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             className="w-full max-w-2xl h-[80vh] rounded-[2.5rem] flex flex-col overflow-hidden"
-            style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', boxShadow: '0 25px 60px rgba(0,0,0,0.5)' }}
+            style={{ background: 'var(--surface)', border: '1px solid var(--border)', boxShadow: '0 25px 60px rgba(0,0,0,0.5)' }}
           >
-            <div className="p-6 flex justify-between items-center shrink-0" style={{ background: 'rgba(255,255,255,0.04)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+            <div className="p-6 flex justify-between items-center shrink-0" style={{ background: 'var(--surface2)', borderBottom: '1px solid var(--surface2)' }}>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #2563eb, #1d4ed8)', boxShadow: '0 4px 16px rgba(37,99,235,0.4)' }}>
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, var(--accent), var(--accent-dim))', boxShadow: '0 4px 16px var(--accent-glow)' }}>
                   <Sparkles className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -295,10 +323,10 @@ export default function App() {
                       : 'rounded-tl-none text-blue-50'
                   }`} style={
                     m.role === 'user'
-                      ? { background: 'linear-gradient(135deg, #2563eb, #1d4ed8)', boxShadow: '0 4px 16px rgba(37,99,235,0.3)' }
+                      ? { background: 'linear-gradient(135deg, var(--accent), var(--accent-dim))', boxShadow: '0 4px 16px var(--accent-glow)' }
                       : m.role === 'system'
                       ? { background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#fca5a5' }
-                      : { background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }
+                      : { background: 'var(--surface2)', border: '1px solid var(--border)' }
                   }>
                     {m.role === 'agent' ? renderMarkdown(m.text) : m.text}
                   </div>
@@ -306,7 +334,7 @@ export default function App() {
               ))}
               {isChatLoading && (
                 <div className="flex justify-start">
-                  <div className="rounded-2xl rounded-tl-none px-6 py-4" style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                  <div className="rounded-2xl rounded-tl-none px-6 py-4" style={{ background: 'var(--surface2)', border: '1px solid var(--border)' }}>
                     <div className="flex space-x-1.5">
                       <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                       <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
@@ -317,8 +345,8 @@ export default function App() {
               )}
             </div>
 
-            <div className="p-6" style={{ borderTop: '1px solid rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.03)' }}>
-              <div className="flex items-center gap-3 rounded-2xl p-2" style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}>
+            <div className="p-6" style={{ borderTop: '1px solid var(--surface2)', background: 'rgba(255,255,255,0.03)' }}>
+              <div className="flex items-center gap-3 rounded-2xl p-2" style={{ background: 'var(--surface2)', border: '1px solid var(--border)' }}>
                 <input
                   type="text"
                   value={inputMessage}
@@ -332,7 +360,7 @@ export default function App() {
                   onClick={handleSendMessage}
                   disabled={isChatLoading || !inputMessage.trim()}
                   className="w-12 h-12 text-white rounded-xl flex items-center justify-center transition-all shrink-0 disabled:opacity-40"
-                  style={{ background: 'linear-gradient(135deg, #2563eb, #1d4ed8)', boxShadow: '0 4px 16px rgba(37,99,235,0.4)' }}
+                  style={{ background: 'linear-gradient(135deg, var(--accent), var(--accent-dim))', boxShadow: '0 4px 16px var(--accent-glow)' }}
                 >
                   <Send className="w-5 h-5" />
                 </button>
