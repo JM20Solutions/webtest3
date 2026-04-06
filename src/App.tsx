@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { 
-  MessageSquare, Send, LogIn, LogOut, User, Lock, Mail, 
-  Sparkles, Shield, AlertCircle, Loader2, ChevronRight
+import {
+  Send, LogIn, LogOut, Lock, Mail,
+  Sparkles, AlertCircle, Loader2
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -64,7 +64,7 @@ function applyInlineFormatting(text: string): React.ReactNode {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
   return parts.map((part, i) => {
     if (part.startsWith('**') && part.endsWith('**')) {
-      return <strong key={i} className="font-semibold text-indigo-900">{part.slice(2, -2)}</strong>;
+      return <strong key={i} className="font-semibold text-blue-200">{part.slice(2, -2)}</strong>;
     }
     return <React.Fragment key={i}>{part}</React.Fragment>;
   });
@@ -173,73 +173,77 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 font-sans text-slate-900">
+    <div className="min-h-screen flex items-center justify-center p-4 text-white" style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0d1f45 50%, #0a1a3a 100%)' }}>
       <AnimatePresence mode="wait">
         {!user ? (
-          <motion.div 
+          <motion.div
             key="login"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="w-full max-w-md bg-white rounded-[2rem] shadow-xl border border-slate-200 overflow-hidden"
+            className="w-full max-w-md rounded-[2rem] overflow-hidden"
+            style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', boxShadow: '0 25px 60px rgba(0,0,0,0.5)' }}
           >
-            <div className="bg-indigo-600 p-8 text-white relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 blur-3xl rounded-full translate-x-16 -translate-y-16" />
+            <div className="p-8 relative overflow-hidden" style={{ background: 'rgba(255,255,255,0.04)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+              <div className="absolute top-0 right-0 w-48 h-48 rounded-full -translate-x-8 -translate-y-16" style={{ background: 'radial-gradient(circle, rgba(99,179,237,0.15) 0%, transparent 70%)' }} />
               <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-2">
-                  <Shield className="w-6 h-6 text-indigo-200" />
-                  <h1 className="text-2xl font-bold tracking-tight">Secure Portal</h1>
+                <div className="flex items-center gap-3 mb-1">
+                  <Sparkles className="w-6 h-6 text-blue-300" />
+                  <span className="text-xs font-semibold uppercase tracking-widest text-blue-300">Customer Support</span>
                 </div>
-                <p className="text-indigo-100/80 text-sm">Sign in to access the n8n agent</p>
+                <h1 className="text-2xl font-extrabold tracking-tight text-white leading-tight">JM20 Agentic<br />Customer Support Services</h1>
+                <p className="text-blue-200/60 text-sm mt-2">Sign in to start your support session</p>
               </div>
             </div>
 
             <form onSubmit={handleLogin} className="p-8 space-y-6">
               <div className="space-y-4">
                 <div>
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Email Address</label>
-                  <div className="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus-within:border-indigo-500 focus-within:bg-white transition-all">
-                    <Mail className="w-4 h-4 text-slate-400" />
-                    <input 
-                      type="email" 
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-blue-300/70 mb-2 block">Email Address</label>
+                  <div className="flex items-center gap-3 rounded-xl px-4 py-3 transition-all" style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                    <Mail className="w-4 h-4 text-blue-300/60" />
+                    <input
+                      type="email"
                       value={loginEmail}
                       onChange={(e) => setLoginEmail(e.target.value)}
                       placeholder="name@example.com"
-                      className="flex-grow bg-transparent border-none text-sm outline-none placeholder:text-slate-300"
+                      className="flex-grow bg-transparent border-none text-sm outline-none text-white placeholder:text-white/30"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Password</label>
-                  <div className="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus-within:border-indigo-500 focus-within:bg-white transition-all">
-                    <Lock className="w-4 h-4 text-slate-400" />
-                    <input 
-                      type="password" 
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-blue-300/70 mb-2 block">Password</label>
+                  <div className="flex items-center gap-3 rounded-xl px-4 py-3 transition-all" style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                    <Lock className="w-4 h-4 text-blue-300/60" />
+                    <input
+                      type="password"
                       value={loginPassword}
                       onChange={(e) => setLoginPassword(e.target.value)}
                       placeholder="••••••••"
-                      className="flex-grow bg-transparent border-none text-sm outline-none placeholder:text-slate-300"
+                      className="flex-grow bg-transparent border-none text-sm outline-none text-white placeholder:text-white/30"
                     />
                   </div>
                 </div>
               </div>
 
               {loginError && (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="flex items-center gap-2 bg-red-50 text-red-600 p-3 rounded-xl text-xs font-medium border border-red-100"
+                  className="flex items-center gap-2 p-3 rounded-xl text-xs font-medium"
+                  style={{ background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#fca5a5' }}
                 >
                   <AlertCircle className="w-4 h-4 shrink-0" />
                   {loginError}
                 </motion.div>
               )}
 
-              <button 
+              <button
                 type="submit"
                 disabled={loginLoading}
-                className="w-full bg-indigo-600 text-white py-4 rounded-xl font-bold text-sm hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-200 disabled:opacity-50 flex items-center justify-center gap-2"
+                className="w-full text-white py-4 rounded-xl font-bold text-sm transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+                style={{ background: 'linear-gradient(135deg, #2563eb, #1d4ed8)', boxShadow: '0 8px 24px rgba(37,99,235,0.4)' }}
               >
                 {loginLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <LogIn className="w-4 h-4" />}
                 Sign In
@@ -247,79 +251,88 @@ export default function App() {
             </form>
           </motion.div>
         ) : (
-          <motion.div 
+          <motion.div
             key="chat"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="w-full max-w-2xl h-[80vh] bg-white rounded-[2.5rem] shadow-2xl border border-slate-200 flex flex-col overflow-hidden"
+            className="w-full max-w-2xl h-[80vh] rounded-[2.5rem] flex flex-col overflow-hidden"
+            style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', boxShadow: '0 25px 60px rgba(0,0,0,0.5)' }}
           >
-            <div className="bg-slate-900 text-white p-6 flex justify-between items-center shrink-0">
+            <div className="p-6 flex justify-between items-center shrink-0" style={{ background: 'rgba(255,255,255,0.04)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-inner">
-                  <Sparkles className="w-6 h-6" />
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #2563eb, #1d4ed8)', boxShadow: '0 4px 16px rgba(37,99,235,0.4)' }}>
+                  <Sparkles className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h2 className="font-bold text-lg leading-none">n8n Agent</h2>
+                  <h2 className="font-extrabold text-lg leading-none text-white">JM20 Agentic Support</h2>
                   <div className="flex items-center gap-2 mt-1">
-                    <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Connected as {user.first_name}</span>
+                    <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-blue-300/60">Connected as {user.first_name}</span>
                   </div>
                 </div>
               </div>
-              <button 
+              <button
                 onClick={handleLogout}
-                className="p-3 hover:bg-white/10 rounded-full transition-colors text-slate-400 hover:text-white"
+                className="p-3 rounded-full transition-colors text-blue-300/60 hover:text-white hover:bg-white/10"
                 title="Logout"
               >
                 <LogOut className="w-5 h-5" />
               </button>
             </div>
 
-            <div 
+            <div
               ref={scrollRef}
-              className="flex-1 overflow-y-auto p-6 space-y-4 bg-slate-50/50"
+              className="flex-1 overflow-y-auto p-6 space-y-4"
+              style={{ background: 'rgba(0,0,0,0.15)' }}
             >
               {messages.map((m) => (
                 <div key={m.id} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div className={`max-w-[85%] px-5 py-3 text-sm leading-relaxed rounded-2xl ${
                     m.role === 'user'
-                      ? 'bg-indigo-600 text-white rounded-tr-none shadow-md'
+                      ? 'rounded-tr-none text-white'
                       : m.role === 'system'
-                      ? 'bg-red-50 text-red-700 border border-red-100 w-full text-center italic text-xs'
-                      : 'bg-white text-slate-700 rounded-tl-none border border-slate-200 shadow-sm'
-                  }`}>
+                      ? 'w-full text-center italic text-xs'
+                      : 'rounded-tl-none text-blue-50'
+                  }`} style={
+                    m.role === 'user'
+                      ? { background: 'linear-gradient(135deg, #2563eb, #1d4ed8)', boxShadow: '0 4px 16px rgba(37,99,235,0.3)' }
+                      : m.role === 'system'
+                      ? { background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', color: '#fca5a5' }
+                      : { background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }
+                  }>
                     {m.role === 'agent' ? renderMarkdown(m.text) : m.text}
                   </div>
                 </div>
               ))}
               {isChatLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-white rounded-2xl rounded-tl-none px-6 py-4 border border-slate-200 shadow-sm">
+                  <div className="rounded-2xl rounded-tl-none px-6 py-4" style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}>
                     <div className="flex space-x-1.5">
-                      <div className="w-2 h-2 bg-indigo-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                      <div className="w-2 h-2 bg-indigo-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                      <div className="w-2 h-2 bg-indigo-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                      <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                      <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                      <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                     </div>
                   </div>
                 </div>
               )}
             </div>
 
-            <div className="p-6 bg-white border-t border-slate-100">
-              <div className="flex items-center gap-3 bg-slate-100 rounded-2xl p-2 focus-within:bg-white focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all">
-                <input 
-                  type="text" 
+            <div className="p-6" style={{ borderTop: '1px solid rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.03)' }}>
+              <div className="flex items-center gap-3 rounded-2xl p-2" style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                <input
+                  type="text"
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
                   placeholder="Type your message..."
                   disabled={isChatLoading}
-                  className="flex-grow bg-transparent border-none py-3 px-4 text-sm outline-none disabled:opacity-50"
+                  className="flex-grow bg-transparent border-none py-3 px-4 text-sm outline-none text-white placeholder:text-white/30 disabled:opacity-50"
                 />
-                <button 
+                <button
                   onClick={handleSendMessage}
                   disabled={isChatLoading || !inputMessage.trim()}
-                  className="w-12 h-12 bg-indigo-600 text-white rounded-xl flex items-center justify-center shadow-lg hover:bg-indigo-700 transition-all shrink-0 disabled:opacity-40"
+                  className="w-12 h-12 text-white rounded-xl flex items-center justify-center transition-all shrink-0 disabled:opacity-40"
+                  style={{ background: 'linear-gradient(135deg, #2563eb, #1d4ed8)', boxShadow: '0 4px 16px rgba(37,99,235,0.4)' }}
                 >
                   <Send className="w-5 h-5" />
                 </button>
