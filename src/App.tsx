@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'motion/react';
 // ── CONFIGURATION ──
 const SUPABASE_URL = 'https://wiavnyuchdsfztzhvaua.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpYXZueXVjaGRzZnp0emh2YXVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEwMDI2ODQsImV4cCI6MjA4NjU3ODY4NH0.dXz7vyFglA_lihma__rbtBT8afZZ1YUJEkAmqpFOL6c';
-const N8N_WEBHOOK_URL = 'https://gpixie.app.n8n.cloud/webhook/dcf09b4f-67fb-4bc6-a50c-9fb9fffacd01';
+const N8N_WEBHOOK_URL = 'https://gpixie.app.n8n.cloud/webhook/d0b18dfb-a876-4887-8fab-b90e04b95059';
 
 interface UserInfo {
   id: string;
