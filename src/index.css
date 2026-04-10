@@ -1,10 +1,9 @@
 @import "tailwindcss";
 
-/* Apple design system — SF Pro optical sizing, tight tracking */
 html, body {
   margin: 0;
-  background: #000000;
-  color: #ffffff;
+  background: #f5f5f7;
+  color: #1d1d1f;
   font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 17px;
   line-height: 1.47;
@@ -13,31 +12,29 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-::placeholder { color: rgba(255,255,255,0.28); }
+* { box-sizing: border-box; }
+
+::placeholder { color: #8e8e93; }
 
 ::-webkit-scrollbar       { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #3a3a3c; border-radius: 9999px; }
+::-webkit-scrollbar-thumb { background: #c7c7cc; border-radius: 9999px; }
 
-/* Typing dots */
 @keyframes bounce-dot {
-  0%, 60%, 100% { transform: translateY(0);   opacity: 0.35; }
-  30%           { transform: translateY(-4px); opacity: 0.9; }
+  0%, 60%, 100% { transform: translateY(0);   opacity: 0.4; }
+  30%           { transform: translateY(-4px); opacity: 1;   }
 }
 
-/* Spinner */
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+@keyframes spin { to { transform: rotate(360deg); } }
 .spin { animation: spin 0.9s linear infinite; }
 
-/* Loading state before React hydrates */
+/* Pre-hydration spinner */
 #root:empty::after {
   content: '';
   display: block;
   width: 28px; height: 28px;
   margin: 48vh auto 0;
-  border: 2.5px solid #3a3a3c;
+  border: 2.5px solid #d2d2d7;
   border-top-color: #0071e3;
   border-radius: 50%;
   animation: spin .8s linear infinite;
