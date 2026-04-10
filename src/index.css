@@ -1,76 +1,44 @@
 @import "tailwindcss";
 
-:root {
-  --font-sf: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-  --font-sf-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
-
-  --bg:           #000000;
-  --surface:      #1C1C1E;
-  --surface2:     #2C2C2E;
-  --surface3:     #3A3A3C;
-
-  --glass:        rgba(28, 28, 30, 0.82);
-  --glass-border: rgba(255, 255, 255, 0.09);
-
-  --text:         #F5F5F7;
-  --text-2:       #A1A1A6;
-  --text-3:       #636366;
-
-  --blue:         #0071E3;
-  --blue-bright:  #0A84FF;
-  --blue-glow:    rgba(0, 113, 227, 0.28);
-  --green:        #30D158;
-  --red:          #FF453A;
-  --sep:          rgba(255, 255, 255, 0.10);
-  --sep-solid:    #38383A;
-}
-
+/* Apple design system — SF Pro optical sizing, tight tracking */
 html, body {
-  height: 100%;
   margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-sf);
-  font-size: 15px;
-  line-height: 1.5;
+  background: #000000;
+  color: #ffffff;
+  font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-::placeholder { color: var(--text-3); }
+::placeholder { color: rgba(255,255,255,0.28); }
 
 ::-webkit-scrollbar       { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--sep-solid); border-radius: 9999px; }
-
-/* Glass helpers */
-.glass-card {
-  backdrop-filter: blur(48px);
-  -webkit-backdrop-filter: blur(48px);
-}
-.glass-bar {
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-}
-
-/* Entrance animations */
-@keyframes fade-up {
-  from { opacity: 0; transform: scale(0.96) translateY(14px); }
-  to   { opacity: 1; transform: scale(1)    translateY(0); }
-}
-@keyframes fade-in {
-  from { opacity: 0; transform: scale(0.97); }
-  to   { opacity: 1; transform: scale(1); }
-}
+::-webkit-scrollbar-thumb { background: #3a3a3c; border-radius: 9999px; }
 
 /* Typing dots */
 @keyframes bounce-dot {
-  0%, 60%, 100% { transform: translateY(0);   opacity: 0.45; }
-  30%           { transform: translateY(-5px); opacity: 1; }
+  0%, 60%, 100% { transform: translateY(0);   opacity: 0.35; }
+  30%           { transform: translateY(-4px); opacity: 0.9; }
 }
 
-/* Spin (for Loader2 icon) */
+/* Spinner */
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
 .spin { animation: spin 0.9s linear infinite; }
+
+/* Loading state before React hydrates */
+#root:empty::after {
+  content: '';
+  display: block;
+  width: 28px; height: 28px;
+  margin: 48vh auto 0;
+  border: 2.5px solid #3a3a3c;
+  border-top-color: #0071e3;
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
