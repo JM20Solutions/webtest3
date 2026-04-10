@@ -204,12 +204,11 @@ export default function App() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: -16 }}
             transition={{ type: 'spring', stiffness: 380, damping: 28 }}
+            className="glass-card"
             style={{
               width: '100%',
               maxWidth: 400,
               background: a.glassBg,
-              backdropFilter: 'blur(48px)',
-              WebkitBackdropFilter: 'blur(48px)',
               border: `1px solid ${a.glassBorder}`,
               borderRadius: 20,
               boxShadow: '0 32px 96px rgba(0,0,0,0.85), 0 0 0 0.5px rgba(255,255,255,0.04)',
@@ -326,6 +325,7 @@ export default function App() {
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: 'spring', stiffness: 380, damping: 28 }}
+            className="glass-card"
             style={{
               width: '100%',
               maxWidth: 680,
@@ -334,8 +334,6 @@ export default function App() {
               display: 'flex',
               flexDirection: 'column',
               background: a.glassBg,
-              backdropFilter: 'blur(48px)',
-              WebkitBackdropFilter: 'blur(48px)',
               border: `1px solid ${a.glassBorder}`,
               borderRadius: 20,
               boxShadow: '0 32px 96px rgba(0,0,0,0.85), 0 0 0 0.5px rgba(255,255,255,0.04)',
@@ -343,12 +341,11 @@ export default function App() {
             }}
           >
             {/* ── Nav Bar ── */}
-            <div style={{
+            <div className="glass-bar" style={{
               padding: '14px 20px',
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               borderBottom: `1px solid ${a.separator}`,
               background: 'rgba(28,28,30,0.65)',
-              backdropFilter: 'blur(24px)',
               flexShrink: 0,
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
@@ -492,11 +489,10 @@ export default function App() {
             </div>
 
             {/* ── Input Bar ── */}
-            <div style={{
+            <div className="glass-bar" style={{
               padding: '12px 16px',
               borderTop: `1px solid ${a.separator}`,
               background: 'rgba(28,28,30,0.85)',
-              backdropFilter: 'blur(24px)',
               flexShrink: 0,
             }}>
               <div style={{

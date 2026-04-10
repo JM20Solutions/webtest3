@@ -61,6 +61,16 @@ html, body {
 ::-webkit-scrollbar-track  { background: transparent; }
 ::-webkit-scrollbar-thumb  { background: var(--separator-opaque); border-radius: 9999px; }
 
+/* Glass helpers — applied as className so motion.div doesn't try to parse/animate them */
+.glass-card {
+  backdrop-filter: blur(48px);
+  -webkit-backdrop-filter: blur(48px);
+}
+.glass-bar {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
 @keyframes bounce-dot {
   0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
   30%           { transform: translateY(-5px); opacity: 1; }
